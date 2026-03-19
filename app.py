@@ -13,7 +13,7 @@ def get_base64_image(image_path):
 
 bg_image = get_base64_image("Food image.jpg")
 
-# ---------------- GLOBAL STYLE (APPLY TO ALL PAGES) ---------------- #
+# ---------------- GLOBAL STYLE ---------------- #
 st.markdown(f"""
 <style>
 .stApp {{
@@ -60,7 +60,7 @@ if "user" not in st.session_state:
 if "category" not in st.session_state:
     st.session_state.category = None
 
-# ---------------- LOGOUT FUNCTION ---------------- #
+# ---------------- LOGOUT ---------------- #
 def logout_button():
     col1, col2 = st.columns([9,1])
     with col2:
@@ -70,40 +70,70 @@ def logout_button():
             st.session_state.page = "login"
             st.rerun()
 
-# ---------------- MENU WITH CATEGORY ---------------- #
+# ---------------- UPDATED MENU ---------------- #
 menu = {
-    "Chicken Pahadi Kabab": {
-        "price": 400,
-        "category": "Non-Veg",
-        "img": "images/Beetroot.jpg"
-    },
-    "Chicken Lollypop": {
-        "price": 380,
-        "category": "Non-Veg",
-        "img": "images/Beetroot.jpg"
-    },
-    "Chicken Manchurian": {
-        "price": 395,
-        "category": "Non-Veg",
-        "img": "images/Beetroot.jpg"
-    },
-    "Prawns Fried Rice": {
-        "price": 400,
-        "category": "Non-Veg",
-        "img": "images/Beetroot.jpg"
-    },
+    # Biryani
+    "Veg Dum Biryani": {"price": 200, "category": "Veg", "img": "images/veg.jpg"},
+    "Paneer Dum Biryani": {"price": 230, "category": "Veg", "img": "images/paneer.jpg"},
+    "Egg Dum Biryani": {"price": 220, "category": "Egg", "img": "images/egg.jpg"},
+    "Chicken Dum Biryani": {"price": 250, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Mutton Dum Biryani": {"price": 320, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Prawns Dum Biryani": {"price": 300, "category": "Non-Veg", "img": "images/prawns.jpg"},
+    "Chicken Tikka Biryani": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Tandoor Dum Biryani": {"price": 290, "category": "Non-Veg", "img": "images/chicken.jpg"},
 
-    "Fried Rice": {
-        "price": 200,
-        "category": "Veg",
-        "img": "images/Capsicum.jpg"
-    },
+    # Kebabs
+    "Tandoor Chicken Red": {"price": 300, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Tandoor Chicken White": {"price": 300, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Tikka Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Hariyali Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Lasooni Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Tangdi Kebab": {"price": 270, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Malai Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Kalmi Kebab": {"price": 270, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Banjara Kebab": {"price": 290, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Tandoori Lollypop": {"price": 260, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Achari Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Afghani Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Kalimiri Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Angara Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Reshmi Kebab": {"price": 280, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Chicken Sheekh Kebab": {"price": 300, "category": "Non-Veg", "img": "images/chicken.jpg"},
+    "Mutton Sheekh Kebab": {"price": 340, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Paneer Tikka Kebab": {"price": 260, "category": "Veg", "img": "images/paneer.jpg"},
+    "Mushroom Tikka Kebab": {"price": 250, "category": "Veg", "img": "images/mushroom.jpg"},
+    "Prawns Tikka Kebab": {"price": 320, "category": "Non-Veg", "img": "images/prawns.jpg"},
 
-    "Lassi": {
-        "price": 20,
-        "category": "Cool Drinks",
-        "img": "images/Maaza.jpg"
-    }
+    # Mutton & Prawns
+    "Mutton Masala": {"price": 320, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Bhuna Gosht": {"price": 330, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Kadai Gosht": {"price": 330, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Mutton Kheema Masala": {"price": 350, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Mutton Banjara Kheema": {"price": 360, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Mutton Rogan Josh": {"price": 340, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Mutton Kolhapuri": {"price": 340, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Mutton Hariyali": {"price": 340, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Spl Pride Kitchen Mutton": {"price": 370, "category": "Non-Veg", "img": "images/mutton.jpg"},
+    "Prawns Masala": {"price": 340, "category": "Non-Veg", "img": "images/prawns.jpg"},
+
+    # Egg
+    "Sultani Egg": {"price": 260, "category": "Egg", "img": "images/egg.jpg"},
+    "Kadai Egg": {"price": 260, "category": "Egg", "img": "images/egg.jpg"},
+    "Egg Bhurji": {"price": 150, "category": "Egg", "img": "images/egg.jpg"},
+    "Spl Pride Kitchen Egg": {"price": 270, "category": "Egg", "img": "images/egg.jpg"},
+
+    # Breads
+    "Tandoor Roti": {"price": 25, "category": "Breads", "img": "images/roti.jpg"},
+    "Naan": {"price": 30, "category": "Breads", "img": "images/naan.jpg"},
+    "Butter Naan": {"price": 40, "category": "Breads", "img": "images/naan.jpg"},
+    "Garlic Naan": {"price": 40, "category": "Breads", "img": "images/naan.jpg"},
+    "Butter Garlic Naan": {"price": 50, "category": "Breads", "img": "images/naan.jpg"},
+    "Cheese Naan": {"price": 50, "category": "Breads", "img": "images/naan.jpg"},
+    "Butter Cheese Naan": {"price": 60, "category": "Breads", "img": "images/naan.jpg"},
+    "Kulcha": {"price": 35, "category": "Breads", "img": "images/naan.jpg"},
+    "Butter Kulcha": {"price": 45, "category": "Breads", "img": "images/naan.jpg"},
+    "Aloo Paratha": {"price": 70, "category": "Breads", "img": "images/paratha.jpg"},
+    "Butter Aloo Paratha": {"price": 80, "category": "Breads", "img": "images/paratha.jpg"},
 }
 
 # ---------------- LOGIN ---------------- #
@@ -165,7 +195,7 @@ def category_page():
     logout_button()
     st.title("🍽 Select Category")
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         if st.button("🍗 Non-Veg"):
@@ -180,8 +210,14 @@ def category_page():
             st.rerun()
 
     with col3:
-        if st.button("🥤 Cool Drinks"):
-            st.session_state.category = "Cool Drinks"
+        if st.button("🥚 Egg"):
+            st.session_state.category = "Egg"
+            st.session_state.page = "menu"
+            st.rerun()
+
+    with col4:
+        if st.button("🫓 Breads"):
+            st.session_state.category = "Breads"
             st.session_state.page = "menu"
             st.rerun()
 
@@ -191,7 +227,6 @@ def menu_page():
     st.title(f"📋 {st.session_state.category} Menu")
 
     cols = st.columns(3)
-
     filtered_items = {k: v for k, v in menu.items() if v["category"] == st.session_state.category}
 
     for i, (item, details) in enumerate(filtered_items.items()):
